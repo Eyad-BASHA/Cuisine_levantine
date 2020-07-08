@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Détail la Recette {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Détail la Recette : </h1>
+
+    {% if request.user.is_authenticated and request.user.is_superuser %}
+
+    <div class="card promoting-card">
+
+        <!-- Card content -->
+        <div class="card-body d-flex flex-row">
+
+            <!-- Avatar -->
+            <figure class="mr-3">
+                {% if article.auther.profile.profile_pic %}
+                <img src="{{ article.auther.profile.profile_pic.url }}" alt="{{ article.auther }}"
+                    class="rounded-circle account-img" width="70px">
+                {% else %}
+                <img src="media/profiles/default_user.jpg" class="rounded-circle" alt="{{ article.auther }}"
+                    class="rounded-circle account-img" width="80px" height="80px">
+                {% endif %}
+            </figure>
+            <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3"
+                height="50px" width="50px" alt="avatar"> -->
+
+            <!-- Content -->
+            <div>
+
+                <!-- Title -->
+                {% if article.auther %}
+                <h4 class="card-title font-weight-bold mb-2">{{ article.auther }}</h4>
+                {% else %}
+                <h4 class="card-title font-weight-bold mb-2">Anonymous author</h4>
+                {% endif %}
+                <!-- Subtitle -->
+                <p class="card-text"><i class="far fa-clock pr-2"></i>{{ article.date_published }}</p>
+                {% if article.date_updated %}
+                <p class="card-text"><i class="far fa-clock pr-2"></i>Mise à jour le : {{ article.date_updated }}
+                </p>
+                {% endif%}
+
+            </div>
+
+        </div>
+
+        <!-- Card image -->
+        <div class="view overlay">
+
+
+
+            <!-- <img class="card-img-top rounded-0" src="{{ p.media.url }}" alt="Card image cap">
+            <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+            </a> -->
+
+
+
+
+            <!-- ============================ -->
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="mdb-lightbox-ui"></div>
+
+                    <div class="mdb-lightbox no-margin">
+                        {{ article.medias }}
+
+                        {% for p in article.medias_set.all %}
+                        {% if '.tif' in p.media.url or '.tiff' in p.media.url or '.bmp' in p.media.url or '.jpg' in p.media.url or '.jpeg' in p.media.url or '.gif' in p.media.url or '.png' in p.media.url or '.eps' in p.media.url %}
+                        <figure class="col-md-4">
+                            <a href="{{ p.media.url }}" data-size="1600x1067" target="_blank">
+                                <img alt="{{ p.title }}" src="{{ p.media.url }}" class="img-fluid">
+                            </a>
+                        </figure>
+                        {% else %}
+                        <video width="320" height="240" controls>
+                            <source src="{{ p.media.url }}" type="video/mp4">
+                            <source src="{{ p.media.url }}" type="video/webm">
+                            <source src="{{ p.media.url }}" type="video/mkv">
+                            <source src="{{ p.media.url }}" type="video/flv">
+                            <source src="{{ p.media.url }}" type="video/vob">
+                            <source src="{{ p.media.url }}" type="video/ogv">
+                            <source src="{{ p.media.url }}" type="video/ogg">
+                            <source src="{{ p.media.url }}" type="video/drc">
+                            <source src="{{ p.media.url }}" type="video/gifv">
+                            <source src="{{ p.media.url }}" type="video/mng">
+                            <source src="{{ p.media.url }}" type="video/avi">
+                            <source src="{{ p.media.url }}" type="video/mov">
+                            <source src="{{ p.media.url }}" type="video/qt">
+                            <source src="{{ p.media.url }}" type="video/wmv">
+                            <source src="{{ p.media.url }}" type="video/yuv">
+                            <source src="{{ p.media.url }}" type="video/rm">
+                            <source src="{{ p.media.url }}" type="video/rmvb">
+                            <source src="{{ p.media.url }}" type="video/asf">
+                            <source src="{{ p.media.url }}" type="video/amv">
+                            <source src="{{ p.media.url }}" type="video/m4p">
+                            <source src="{{ p.media.url }}" type="video/m4v">
+                            <source src="{{ p.media.url }}" type="video/mpg">
+                            <source src="{{ p.media.url }}" type="video/mp2">
+                            <source src="{{ p.media.url }}" type="video/mpeg">
+                            <source src="{{ p.media.url }}" type="video/mpe">
+                            <source src="{{ p.media.url }}" type="video/mpv">
+                            <source src="{{ p.media.url }}" type="video/mpg">
+                            <source src="{{ p.media.url }}" type="video/mpeg">
+                            <source src="{{ p.media.url }}" type="video/m2v">
+                            <source src="{{ p.media.url }}" type="video/m4v">
+                            <source src="{{ p.media.url }}" type="video/svi">
+                            <source src="{{ p.media.url }}" type="video/3gp">
+                            <source src="{{ p.media.url }}" type="video/3g2">
+                            <source src="{{ p.media.url }}" type="video/mxf">
+                            <source src="{{ p.media.url }}" type="video/roq">
+                            <source src="{{ p.media.url }}" type="video/nsv">
+                            <source src="{{ p.media.url }}" type="video/flv">
+                            <source src="{{ p.media.url }}" type="video/f4v">
+                            <source src="{{ p.media.url }}" type="video/f4p">
+                            <source src="{{ p.media.url }}" type="video/f4a">
+                            <source src="{{ p.media.url }}" type="video/f4b">
+                        </video>
+                        {% endif %}
+
+                        {% endfor %}
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- ============================= -->
+
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+            <div class="collapse-content">
+
+
+                <!-- Title -->
+                <h2 class="card-title font-weight-bold mb-2">{{ article.title }}</h2>
+                <h5 class="card-title font-weight-bold mb-2">Catégorie : {{ article.category }}</h5>
+                <h5 class="card-title font-weight-bold mb-2">Sous Catégorie : {{ article.sub_category }}</h5>
+                <!-- Text -->
+                <p class="card-text">
+                    {{ article.description|safe }}</p>
+                <!-- Button -->
+                <!-- <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse"
+                    href="#collapseContent{{ article.id }}" aria-expanded="false"
+                    aria-controls="collapseContent"></a> -->
+                    
+                <!-- <i class="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip"
+                    data-placement="top" title="Share this post"></i> -->
+                <!-- <i class="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip"
+                data-placement="top" title="I like it"></i> -->
+
+
+
+
+            </div>
+
+            <!-- article.auther -->
+            {% if user.is_authenticated and user.is_superuser %}
+            
+            <a href="{% url 'update_article' article.id %}" class="btn btn-warning" title="Mettre à jour"><i class='far fa-edit' aria-hidden="true"></i></a>
+            <a href="{% url 'delete_article' article.id %}" class="btn btn-danger" title="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+            
+
+
+
+
+            {% endif %}
+        </div>
+    {% endif %}
+
+    </div>
+    <!-- Card -->
+
+
+
+
+
+</div>
+
+
+
+{% endblock %}

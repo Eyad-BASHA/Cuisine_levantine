@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %} Erreur 404, Page introuvable {% endblock %}
+{% block content %}
+
+<div class="container jumbotron pt-5">
+    <h1 class="display-4"> Page introuvable </h1>
+    <p class="lead">Cette page manque ou n’existe pas.</p>
+    <!-- This page missing or not exists -->
+    <a href="{% url 'home' %}" class="btn btn-primary">page d'accueil</a>
+</div>
+
+
+{% endblock %}

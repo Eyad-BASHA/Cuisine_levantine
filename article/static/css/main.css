@@ -1,0 +1,57 @@
+body {
+    /* background-color: #323232; */
+    background-color: #eeeeee
+    
+}
+
+
+.span_red {
+    color: red;
+}
+
+.requiredField {
+    position: relative;
+}
+.asteriskField {
+    position: absolute;
+    color: red;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.btn.btn-flat {
+    font-weight: 500;
+    color: inherit;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.collapse-content a.collapsed:after {
+    content: "Read More";
+}
+.card-body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 0 !important;
+}
+.collapse-content table.collapse:not(.show), .collapse-content p.collapse:not(.show) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 2.65rem;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mdb-lightbox.no-margin [class*="col-"] {
+    padding: 0;
+}
+.mdb-lightbox figure {
+    float: left;
+    margin: 0;
+}
+
+.btn-like {
+    background-color: transparent !important;
+}

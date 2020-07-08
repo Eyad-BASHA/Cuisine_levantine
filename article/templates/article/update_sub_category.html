@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Mettre à jour la sous Catégorie {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Mettre à jour la sous Catégorie</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {% if form_update_sub_category.errors %}
+        <div class="alert alert-danger alert-dismissible col-12" role="alert">
+            <div id="form_errors">
+
+                {% for key, value in form_update_sub_category.errors.items %}
+                <span class="fieldWrapper">
+                    {{ key }}:{{ value }}
+                </span>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif formset.total_error_count %}
+        <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+        {% endif %}
+
+      
+            {{ form_update_sub_category|crispy }}
+
+        <div class="form-group">
+            <input type="submit" value="Mettre à jour" class="btn btn-success">
+        </div>
+        
+    </form>
+<!-- 
+    <aside>
+        {% for category in categories %}
+            <p>{{ category.name }}
+                <a href="{% url 'update_category/' %} {{ category.id }}" class="btn btn-warning">Update Category</a>
+                <a href="{% url 'delete_category/' %} {{ category.id }}" class="btn btn-danger">Delete Category</a>
+            </p>
+        {% endfor %}
+    </aside> -->
+
+</div>
+
+
+{% endblock %}

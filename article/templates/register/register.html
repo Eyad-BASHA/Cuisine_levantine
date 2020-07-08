@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+
+{% block title %} Créer un compte d'utilisateur {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Créer un compte d'utilisateur</h1>
+
+    <div class="content-section">
+        <form method="POST" action="" class="form-group">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <!-- <legend class="border-bottom mb-4">
+                    Join Today
+                </legend> -->
+                {{ form|crispy  }}
+<!-- 
+                <div class="form-group">
+                    {{ form.username|as_crispy_field  }}
+                </div>
+                <div class="form-group">
+                    {{ form.first_name|as_crispy_field  }}
+                </div> -->
+
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="s'inscrire">
+                </div>
+                
+            </fieldset>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Avez-Vous déjà un compte ?  <a class="btn btn-info ml-2"href="{% url 'login' %}">Connecter</a>
+            </small>
+        </div>
+    </div>
+
+<!-- 
+    <form method="POST" action="" class="form-group">
+        
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-success" value="Register">
+
+    </form> -->
+</div>
+
+{% endblock %}

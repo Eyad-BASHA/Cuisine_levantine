@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block title %} Supprimer l'article {{ article.title }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <h1>Voulez-vous supprimer la recette : <br />(( {{ article.title }} ))  ?</h1>
+        <div class="form-group">
+            <p><input type="submit" value="supprimer" class="btn btn-danger"> <a href="{% url 'home' %}" class="btn btn-info">Annuler</a></p> </p>
+        </div>
+        
+    </form>
+
+
+</div>
+
+
+{% endblock %}

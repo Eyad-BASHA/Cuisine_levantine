@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Configurations {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h1>Configurations</h1>
+
+
+
+{% if request.user.is_authenticated and user.is_superuser %}
+
+<h2>List des utilisateurs :</h2>
+    
+  
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First-name</th>
+            <th scope="col">Last-name</th>
+            <th scope="col">Satff</th>
+            <th scope="col">SuperUser</th>
+            <th scope="col">Active</th>
+            <th scope="col">Allow Comment</th>
+            <th scope="col">Date Joined</th>
+            <th scope="col">Last-login</th>
+            <th scope="col">Edite</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.username }}</td>
+            {% if user.first_name %}
+            <td>{{ user.first_name }}</td>
+            {% else %}
+            <td>-</td>
+            {% endif %}
+            {% if user.last_name %}
+            <td>{{ user.last_name }}</td>
+            {% else %}
+            <td>-</td>
+            {% endif %}
+            <td>{{ user.is_staff }}</td>
+            <td>{{ user.is_superuser }}</td>
+            <td>{{ user.is_active }}</td>
+            <td>{{ user.profile.is_comment }}</td>
+            <td>{{ user.date_joined }}</td>
+            <td>{{ user.last_login }}</td>
+            <td>
+              <a href="{%  url 'user_conf' user.id %}" class="btn btn-warning"> <i class='far fa-edit' aria-hidden="true"></i> </a>
+            </td>
+            <td>
+              <a href="{% url 'delete_user' user.id %}" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <a href="{% url 'dashboard' %}" class="btn btn-primary">{% trans "retour au tableau de bord" %}</a>
+      
+
+
+    
+
+
+
+</div>
+
+{% endif %}
+
+{% endblock %}

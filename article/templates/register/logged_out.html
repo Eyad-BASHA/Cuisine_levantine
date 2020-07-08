@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %} Déconnexion {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <!-- <h1>You have been logged out ! </h1> -->
+    <h1>Vous avez été déconnecté !</h1>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="btn btn-primary" href="{% url 'login' %}">Reconnectez-Vous</a>
+        </small>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block title %} Supprimer l'utilisateur {{ user.username }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if request.user.is_authenticated and request.user.is_superuser %}
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <h1>Voulez-vous supprimer l'utilisateur : <br />(( {{ user.username }} ))  ?</h1>
+        <div class="form-group">
+            <p><input type="submit" value="supprimer" class="btn btn-danger"> <a href="{% url 'home' %}" class="btn btn-info">Annuler</a></p> </p>
+        </div>
+        
+    </form>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

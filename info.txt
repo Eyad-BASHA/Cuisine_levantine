@@ -1,0 +1,64 @@
+Image File Formats:
+
+.tif 
+.tiff
+.bmp
+.jpg
+.jpeg
+.gif
+.png 
+.eps
+.raw
+.cr2
+.nef 
+.orf
+.sr2
+
+
+
+video file formats list: 
+.webm
+.mkv
+.flv
+.vob
+.ogv, 
+.ogg
+.drc
+.gifv
+.mng
+.avi
+.mov, 
+.qt
+.wmv
+.yuv
+.rm
+.rmvb
+.asf
+.amv
+.mp4, 
+.m4p (with DRM), 
+.m4v
+.mpg, 
+.mp2, 
+.mpeg, 
+.mpe, 
+.mpv
+.mpg, 
+.mpeg, 
+.m2v
+.m4v
+.svi
+.3gp
+.3g2
+.mxf
+.roq
+.nsv
+.flv 
+.f4v 
+.f4p 
+.f4a 
+.f4b
+
+Linux convert :
+
+ffmpeg -i POULET.mp4 -codec:v libtheora -qscale:v 3 -codec:a libvorbis -qscale:a 3 -f ogv test.ogv

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Se Connecter {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Se Connecter </h1>
+    <!-- <p>Please, use the following form to log-in</p> -->
+    <p>Veuillez utiliser le formulaire suivant pour connecter</p>
+    
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        
+        <input type="submit" class="btn btn-success" value="Connecter">
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Vous n’avez pas de compte ?  <a class="btn btn-info"href="{% url 'register' %}">Enregistrer</a>
+        </small>
+        <small class="text-muted">
+            Mot de passe oublié ? <a class="btn btn-info"href="{% url 'password_reset' %}">Réinitialiser votre mot de passe</a>
+        </small>
+    </div>
+</div>
+
+{% endblock %}

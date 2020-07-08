@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-06 19:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: forms.py:19
+msgid "Prénom"
+msgstr "الاسم اﻷول"
+
+#: forms.py:20
+msgid "Nom"
+msgstr "اسم العائلة"
+
+#: forms.py:21 forms.py:36
+msgid "Email"
+msgstr "البريد اﻹلكتروني"
+
+#: forms.py:49
+msgid "image"
+msgstr "صورة"
+
+#: forms.py:49
+msgid "Seuls les formats d’image sont acceptés"
+msgstr "تقبل صيغة الصورة فقط"
+
+#: forms.py:59
+msgid "Date de Naissance"
+msgstr "تاريخ الميلاد"
+
+#: forms.py:60
+msgid "Image de Profil"
+msgstr "الصورة الشخصية"
+
+#: forms.py:172
+msgid "Langue"
+msgstr "اللغة"
+
+#: forms.py:173
+msgid "Catégorie"
+msgstr "تصنيفات"
+
+#: forms.py:174 templates/base.html:60
+msgid "Sous-Catégorie"
+msgstr "التصنيفات الفرعية"
+
+#: forms.py:175
+msgid "Titre"
+msgstr "العنوان"
+
+#: forms.py:176
+msgid "Description"
+msgstr "المحتوى"
+
+#: forms.py:177
+msgid "Est Publié"
+msgstr "نشر"
+
+#: templates/article/home.html:8 templates/base.html:53
+msgid "Les Recettes"
+msgstr "الوصفات"
+
+#: templates/base.html:57
+msgid "Catégories"
+msgstr "التصنيفات"
+
+#: templates/base.html:63
+msgid "Tableau de Bord"
+msgstr "لوحة القيادة"
+
+#: templates/base.html:101
+msgid "Bienvenue"
+msgstr "مرحبا بك"
+
+#: templates/base.html:108
+msgid "Profile"
+msgstr "ملف تعريف المستخدم"
+
+#: templates/base.html:118
+msgid "Changer le Mot de Passe"
+msgstr "تغيير كلمة السر"
+
+#: templates/base.html:123
+msgid "Déconnexion"
+msgstr "تسجيل الخروج"
+
+#: templates/base.html:136
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+#: templates/base.html:140
+msgid "S'inscrir"
+msgstr "إنشاء حساب"
+
+#: templates/base.html:161
+msgid "Aller"
+msgstr "ابدأ"

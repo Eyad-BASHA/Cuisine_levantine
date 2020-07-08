@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Configurations {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h1>Mettre à jour les configurations pour l'utilisateur ( {{ user.username }} ) </h1>
+
+
+
+{% if request.user.is_authenticated and request.user.is_superuser %}
+
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {% if user_conf_form.errors %}
+        <div class="alert alert-danger alert-dismissible col-12" role="alert">
+            <div id="form_errors">
+
+                {% for key, value in user_conf_form.errors.items %}
+                <span class="fieldWrapper">
+                    {{ key }}:{{ value }}
+                </span>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif formset.total_error_count %}
+        <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+        {% endif %}
+
+        <div class="form-group">
+         {{ user_conf_form|crispy }}
+        </div>
+
+        <div class="form-group ">
+            {{ user_conf_comment_form|crispy }}
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" value="Mettre à jour" class="btn btn-success mt-3">
+        </div>
+        
+    </form>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

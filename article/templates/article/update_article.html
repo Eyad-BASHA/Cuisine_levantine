@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %} Mettre à jour la Recette {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h1>Mettre à jour la Recette :</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {% if form_update_article.errors %}
+        <div class="alert alert-danger alert-dismissible col-12" role="alert">
+            <div id="form_errors">
+
+                {% for key, value in form_update_article.errors.items %}
+                <span class="fieldWrapper">
+                    {{ key }}:{{ value }}
+                </span>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif formset.total_error_count %}
+        <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+        {% endif %}
+
+        <div class="form-group">
+            <!-- {{ form_update_article.title.label_tag }}
+            {{ form_update_article.title|add_class:'form-controler'  }} -->
+            {{ form_update_article.media }}
+            <!-- {{ form_update_article|crispy }} -->
+        </div>
+
+
+        <div class="form-group">
+            {{ form_update_article.language|as_crispy_field }}
+        </div>
+        <div class="form-group">
+            {{ form_update_article.category|as_crispy_field }}
+        </div>
+        <div class="form-group">
+            {{ form_update_article.sub_category|as_crispy_field }}
+        </div>
+        <div class="form-group">
+            {{ form_update_article.title|as_crispy_field }}
+        </div>
+        <div class="form-group">
+            {{ form_update_article.description|as_crispy_field }}
+        </div>
+
+        <!-- <div class="form-group">
+            {{ form_new_article.sub_category.label_tag }}
+            {{ form_new_article.sub_category|add_class:'form-controler'  }}
+        </div>
+
+        <div class="form-group">
+            {{ form_new_article.title.label_tag }}
+            {{ form_new_article.title|add_class:'form-controler'  }}
+        </div>
+
+        <div class="form-group">
+            {{ form_new_article.description.label_tag }}
+            {{ form_new_article.description|add_class:'form-controler'  }}
+        </div> -->
+        {% if request.user.is_superuser %}
+        <div class="form-group mt-3 mb-3">
+            {{ form_is_published|crispy }}
+        </div>
+        {% endif %}
+
+        <div class="form-group update-media">
+            {{ form_update_media.management_form }}
+            {% for form in form_update_media %}
+                {{ form|crispy }}
+            {% endfor %}
+        </div>
+        <hr>
+        <div class="form-group add-multiple">
+            <h3 class="test">Ajouter de Nouveaux Médias</h3>
+            {{ form_new_media.management_form|crispy }}
+            {% for form in form_new_media %}
+            {{ form }}
+            {% endfor %}
+            
+            {% if uploaded_file_url %}
+            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+            {% endif %}
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Mettre à jour" class="btn btn-success mt-3">
+        </div>
+        
+    </form>
+
+</div>
+
+
+{% endblock %}
